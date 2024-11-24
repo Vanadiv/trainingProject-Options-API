@@ -1,10 +1,27 @@
-<script>
+<template>
+<div v-if="weather != null" class="sun-info">
+    <div class="center-header">
+        <h2> Солнце </h2>
+    </div>
 
+    <div class="center-text">
+        <h2> Восход  — {{ timeSunrise }} </h2>
+        <h2> Заход  — {{ timeSunset }} </h2>
+    </div>   
+
+    <div class="sun-img">
+        <img src="@/assets/sun2.png" class="scale-img">
+    </div> 
+
+</div>  
+</template>
+
+<script>
 export default {
     props: {
         weather: {
             type: Object,
-        },
+        }
     },
     data() {
         return {
@@ -26,36 +43,17 @@ export default {
                 hour: '2-digit',
                 minute: '2-digit'
             })
-        },
+        }
     }
 }
 </script>
-
-<template>
-  <div v-if="weather" class="infoSun">
-            <div class="centerHeader">
-                <h2> Солнце </h2>
-            </div>
-
-            <div class="centerText">
-                    <h2> Восход  — {{ timeSunrise }} </h2>
-                    <h2> Заход  — {{ timeSunset }} </h2>
-            </div>   
-
-            <div class="imgSun">
-                <img src="@/assets/sun2.png" class="scale-img">
-            </div> 
-
-        </div>
-    
-</template>
 
 <style scoped>
 .scale-img {
     width: 40%; 
     height: auto;
 }
-.infoSun {
+.sun-info {
     grid-area: content2; 
     display: grid;
     box-shadow: 0px 2px 40px #00000014;
@@ -67,7 +65,7 @@ export default {
     gap: 15px;
     margin-right: 50px;
 }
-.imgSun {
+.sun-img {
     grid-area: imgSun;
     display: flex;
     flex-direction: column;
@@ -75,7 +73,7 @@ export default {
     justify-content: center;
     height: 100%;
 }
-.centerText {
+.center-text {
     grid-area: text;
     display: flex;
     flex-direction: column;
@@ -83,8 +81,7 @@ export default {
     justify-content: center;
     height: 100%;
 }
-.centerHeader {
+.center-header {
     grid-area: header;
 }
-
 </style>
